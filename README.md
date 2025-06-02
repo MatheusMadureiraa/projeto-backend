@@ -24,7 +24,7 @@ Certifique-se de que o MongoDB esteja rodando localmente na porta padrão 27017 
 Execute o projeto:
 
     ```bash
-    node src/app.js || node app.js -> se vc estiver dentro da pasta src/
+    node src/app.js OU node app.js -> se vc estiver dentro da pasta src/
     ```
 
 O arquivo app.js chama os métodos dos controllers para testar as operações de CRUD de cada rota.
@@ -39,9 +39,9 @@ O arquivo app.js chama os métodos dos controllers para testar as operações de
 
 ## 📌 MongoDB e Terminal após CRUD
 <div align="center">
-    <img src="./assets-markdown/mongodb" width="75%" alt="Exemplo mongoDB" /> 
+    <img src="./assets-markdown/mongodb.png" width="75%" alt="Exemplo mongoDB" /> 
     <br /> 
-    <img src="./assets-markdown/terminal-crud-empresa" width="75%" alt="CRUD funcionando" /> 
+    <img src="./assets-markdown/terminal-crud-empresa.png" width="75%" alt="CRUD funcionando" /> 
 </div>
 
 Feito com ❤️ por **Matheus Madureira**
