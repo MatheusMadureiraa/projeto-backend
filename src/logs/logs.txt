@@ -1,0 +1,6 @@
+[2025-06-02T15:38:40.343Z] - [EMPRESA]: Erro ao inserir empresa: MongoServerSelectionError: connect ECONNREFUSED ::1:27016, connect ECONNREFUSED 127.0.0.1:27016
+
+[2025-06-02T15:41:07.635Z] - [EMPRESA]: Erro ao inserir empresa: Error: Todos os campo obrigatórios devem ser preenchidos: cnpj, nomeEmpresa, email, senha
+
+[2025-06-02T17:22:30.265Z] - [EMPRESA]: Erro ao inserir empresa: Error: Todos os campo obrigatórios devem ser preenchidos: cnpj, nomeEmpresa, email, senha
+

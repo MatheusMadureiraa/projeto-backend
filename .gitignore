@@ -1,0 +1,8 @@
+# node libs
+node_modules
+
+# as vezes uso mac
+.DS_Store
+
+# package lock
+package-lock.json
