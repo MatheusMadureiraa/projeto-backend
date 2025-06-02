@@ -39,9 +39,9 @@ O arquivo app.js chama os métodos dos controllers para testar as operações de
 
 ## 📌 MongoDB e Terminal após CRUD
 <div align="center">
-    <img src="./assets-markdown/mongodb.png" width="75%" alt="Exemplo mongoDB" /> 
+    <img src="./assets-markdown/mongodb.png" width="85%" alt="Exemplo mongoDB" /> 
     <br /> 
-    <img src="./assets-markdown/terminal-crud-empresa.png" width="75%" alt="CRUD funcionando" /> 
+    <img src="./assets-markdown/terminal-crud-empresa.png" width="85%" alt="CRUD funcionando" /> 
 </div>
 
 Feito com ❤️ por **Matheus Madureira**
