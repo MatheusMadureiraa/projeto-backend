@@ -1,5 +1,4 @@
 // vai ser melhor estruturado quando utilizar o express
-
 const Empresa = require('../models/Empresa.js');
 
 

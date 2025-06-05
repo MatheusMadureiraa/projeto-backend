@@ -1,7 +1,8 @@
 const { connect } = require("../database");
+const Logger = require("../logs/logger.js");
 
 class Cliente {
-    constructor(cpf, nomeCliente, email, senha, telefone, enderecos, dataCadastro, cartoes, pontuacao) {
+    constructor({ cpf, nomeCliente, email, senha, telefone, enderecos, dataCadastro, cartoes, pontuacao }) {
         this.cpf = cpf;
         this.nomeCliente = nomeCliente;
         this.email = email;
@@ -12,9 +13,22 @@ class Cliente {
         this.cartoes = cartoes;
         this.pontuacao = pontuacao;
     }
+
+    // functions axiliares:
+    validarCamposObrigatoriosCliente(){
+        if(!this.cpf || !this.nomeCliente || !this.email || !this.senha){
+            throw new Error("Todos os campos obrigatórios devem ser preenchidos: CPF, Nome, Email e Senha");
+        }
+
+        if(typeof this.cpf !== "string" || typeof this.nomeCliente !== 'string' || typeof this.email !== 'string' || typeof this.senha !== 'string'){
+            throw new Error("CPF, Nome, Email e Senha devem ser uma string");
+        }
+    }
     
     async inserir() {
         try {
+            this.validarCamposObrigatoriosCliente();
+
             const { db, client } = await connect();
             const result = await db.collection("cliente").insertOne({
                 cpf: this.cpf,
@@ -27,10 +41,12 @@ class Cliente {
                 cartoes: this.cartoes,
                 pontuacao: this.pontuacao
             });
-            console.log("Cliente inserido:", result.insertedId);
+            
             client.close();
+            return result;
         } catch (error) {
-            console.log("Erro ao inserir cliente:", error);
+            Logger.log("[CLIENTE]: Erro ao inserir Cliente: " + error);
+            return null;
         }
     }
 
@@ -40,10 +56,12 @@ class Cliente {
             const result = await db.collection("cliente").updateMany(filtro, {
             $set: novosDados,
             });
-            console.log("Clientes atualizados:", result.modifiedCount);
+
             client.close();
+            return result;
         } catch (error) {
             Logger.log("Erro ao atualizar clientes: " + error);
+            return null;
         }
     }
 
@@ -51,10 +69,12 @@ class Cliente {
         try {
             const { db, client } = await connect();
             const result = await db.collection("cliente").find(filtro).toArray();
-            console.log("Clientes encontrados!", result);
+            
             client.close();
+            return result;
         } catch (error) {
             Logger.log("Erro ao buscar clientes! " + error);
+            return null;
         }
     }
 
@@ -62,10 +82,12 @@ class Cliente {
         try {
             const { db, client } = await connect();
             const result = await db.collection("cliente").deleteMany(filtro);
-            console.log("cliente deleta com sucesso!", result.deletedCount);
+
             client.close();
+            return result;
         } catch (error) {
             Logger.log("Erro ao deletar clientes " + error);
+            return null;
         }
     }
 }

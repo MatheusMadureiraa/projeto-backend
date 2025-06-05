@@ -1,4 +1,13 @@
 {
+  "name": "projeto-backend",
+  "version": "1.0.0",
+  "description": "Projeto de backend de um e-commerce com Node.js e MongoDB",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Seu Nome",
+  "license": "MIT",
   "dependencies": {
     "mongodb": "^6.16.0"
   }
