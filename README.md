@@ -19,7 +19,7 @@ O sistema será escalado futuramente com express, já estou separando responsabi
     ```
 
 3. Configure o MongoDB:
-Certifique-se de que o MongoDB esteja rodando localmente na porta padrão 27017 ou ajuste a porta no arquivo `database.js`.
+Importe o arquivo backup-loja ao MongoDB. Certifique-se de que o **MongoDB esteja rodando e conectado** localmente na porta padrão 27017 ou ajuste a porta no arquivo `database.js`.
 
 Execute o projeto:
 
@@ -37,7 +37,7 @@ O arquivo app.js chama os métodos dos controllers para testar as operações de
 - Log de erros em arquivo (fs)
 - Estrutura pronta para uso com Express
 
-## 📌 MongoDB e Terminal após operações do CRUD
+## 📌 MongoDB e Terminal após operações
 <div align="center">
     <img src="./assets-markdown/mongodb.png" width="90%" alt="Exemplo mongoDB" /> 
     <br /> 

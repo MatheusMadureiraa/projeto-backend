@@ -1,6 +1,7 @@
 const { criarEmpresa, buscarEmpresas, atualizarEmpresas, deletarEmpresas } = require("./controllers/empresaController.js");
 const { criarPedido, buscarPedidos, atualizarPedidos, deletarPedidos} = require("./controllers/pedidoController.js");
 const { criarCliente, buscarClientes, atualizarClientes, deletarClientes} = require('./controllers/clienteController.js');
+const { criarProduto, buscarProdutos, atualizarProdutos, deletarProdutos } = require('./controllers/produtoController.js');
 
 
 // aqui pode chamar qualquer function para testar o crud através 
@@ -51,44 +52,55 @@ async function executar() {
 
 
     /* CRUD PEDIDO */
-    await criarPedido({
-        cpfCliente: "500.989.637-90",
-        frete: 19.90,
-        formaPagamento: "pix",
-        dataPedido: new Date(),
-        dataEntrega: "12/jun",
-        itens: [
-            {
-                produtoId: "abc123",
-                nome: "garrafinha",
-                preco: 89.90,
-                quantidade: 2
-            },
-            {
-                produtoId: "def123",
-                nome: "Teclado Mecânico",
-                preco: 199.90,
-                quantidade: 1
-            }
-        ],
-        endereco: [
-            {
-                cep: "17040-987",
-                cidade: "Bauru",
-                rua: "Rua Teste",
-                numero: "2-75",
-                complemento: ""
-            }
-        ],
-        status: -1
-    });
-    await buscarPedidos( {cpfCliente: "500.989.637-90"});
-    await atualizarPedidos({cpfCliente: "500.989.637-90"}, { formaPagamento: "boleto" });
-    await deletarPedidos ( {formaPagamento: "boleto"} );
+    // await criarPedido({
+    //     cpfCliente: "500.989.637-90",
+    //     frete: 19.90,
+    //     formaPagamento: "pix",
+    //     dataPedido: new Date(),
+    //     dataEntrega: "12/jun",
+    //     itens: [
+    //         {
+    //             produtoId: "abc123",
+    //             nome: "garrafinha",
+    //             preco: 89.90,
+    //             quantidade: 2
+    //         },
+    //         {
+    //             produtoId: "def123",
+    //             nome: "Teclado Mecânico",
+    //             preco: 199.90,
+    //             quantidade: 1
+    //         }
+    //     ],
+    //     endereco: [
+    //         {
+    //             cep: "17040-987",
+    //             cidade: "Bauru",
+    //             rua: "Rua Teste",
+    //             numero: "2-75",
+    //             complemento: ""
+    //         }
+    //     ],
+    //     status: -1
+    // });
+    // await buscarPedidos( {cpfCliente: "500.989.637-90"});
+    // await atualizarPedidos({cpfCliente: "500.989.637-90"}, { formaPagamento: "boleto" });
+    // await deletarPedidos ( {formaPagamento: "boleto"} );
 
 
     /* CRUD PRODUTO */
-    
+    // await criarProduto({
+    //     cnpjEmpresa: '12.345.678/0001-00',
+    //     nomeProduto: 'produto teste',
+    //     quantidade: 20,
+    //     valor: 39.90,
+    //     categoria: 'gamer',      
+    //     descricao: 'suporte para fone',   
+    //     status: 'ativo'
+    // });
+    // await buscarProdutos( {cnpjEmpresa: "12.345.678/0001-00"});
+    // await atualizarProdutos({cnpjEmpresa: "12.345.678/0001-00"}, { nomeProduto: "atualizando produto" });
+    // await deletarProdutos ( {cnpjEmpresa: "12.345.678/0001-00"} );
 }
 
 executar();

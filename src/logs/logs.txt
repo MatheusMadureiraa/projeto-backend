@@ -12,3 +12,19 @@
 
 [2025-06-04T16:19:19.506Z] - [PEDIDO]: Erro ao inserir/realizar um pedido na loja: Error: CPF do cliente deve ser string/texto
 
+[2025-06-05T15:50:17.414Z] - Erro ao inserir produto:
+
+[2025-06-05T15:50:29.000Z] - Erro ao inserir produto:
+
+[2025-06-05T15:51:28.139Z] - [PRODUTO]: Erro ao inserir produto:Error: Os campos cnpjEmpresa, nome do Produto e Quantidade são obrigatórios
+
+[2025-06-05T15:53:12.522Z] - [PRODUTO]: Erro ao inserir produto: Error: Os campos cnpjEmpresa, nome do Produto e Quantidade são obrigatórios
+
+[2025-06-05T15:58:16.431Z] - [PRODUTO]: Erro ao inserir produto: Error: Os campos cnpjEmpresa, nome do Produto e Quantidade são obrigatórios
+
+[2025-06-05T15:58:53.501Z] - [PRODUTO]: Erro ao inserir produto: Error: Os campos cnpjEmpresa, nome do Produto e Quantidade são obrigatórios
+
+[2025-06-05T16:05:17.019Z] - [PRODUTO]: Erro ao buscar produtos! ReferenceError: verificarDisponibilidadeProduto is not defined
+
+[2025-06-05T16:05:41.257Z] - [PRODUTO]: Erro ao buscar produtos! ReferenceError: verificarDisponibilidadeProduto is not defined
+

@@ -1,8 +1,9 @@
+// produto que a empresa possui em estoque
 const { connect } = require('../database.js');
+const Logger = require('../logs/logger.js');
 
 class Produto {
-    constructor(idProduto, cnpjEmpresa, nomeProduto, quantidade, valor, categoria, descricao, imagens, status){
-        this.idProduto = idProduto;
+    constructor( {cnpjEmpresa, nomeProduto, quantidade, valor, categoria, descricao, imagens, status} ){
         this.cnpjEmpresa = cnpjEmpresa;
         this.nomeProduto = nomeProduto;
         this.quantidade = quantidade;
@@ -13,11 +14,31 @@ class Produto {
         this.status = status;
     }
 
+    // functions auxiliares
+    validarCamposObrigatoriosProduto(){
+        if(!this.cnpjEmpresa || !this.nomeProduto || !this.quantidade){
+            throw new Error("Os campos cnpjEmpresa, nome do Produto e Quantidade são obrigatórios");
+        }
+
+        if(typeof this.cnpjEmpresa !== "string" || typeof this.nomeProduto !== "string" || !Number.isInteger(this.quantidade)){
+            throw new Error("Revise os campos ao cadastrar: CNPJ e Nome devem ser String; Quantidade deve ser um valor inteiro")
+        }
+    }
+
+    static verificarDisponibilidadeProduto(produtos) {
+        return produtos.map(prod => ({
+            ...prod,
+            esgotado: prod.quantidade <= 0
+        }));
+    }
+
+    // CRUD
     async inserir() {
         try {
+            this.validarCamposObrigatoriosProduto();
+
             const { db, client } = await connect();
             const result = await db.collection("produto").insertOne({
-                idProduto: this.idProduto,
                 cnpjEmpresa: this.cnpjEmpresa,
                 nomeProduto: this.nomeProduto,
                 quantidade: this.quantidade,
@@ -27,23 +48,12 @@ class Produto {
                 imagens: this.imagens,
                 status: this.status
             });
-            console.log("Produto inserido:", result.insertedId);
-            client.close();
-        } catch (error) {
-            console.log("Erro ao inserir produto:", error);
-        }
-    }
 
-    static async atualizar(filtro, novosDados) {
-        try {
-            const { db, client } = await connect();
-            const result = await db.collection("produto").updateMany(filtro, {
-            $set: novosDados,
-            });
-            console.log("produtos atualizados:", result.modifiedCount);
             client.close();
+            return result;
         } catch (error) {
-            Logger.log("Erro ao atualizar produtos: " + error);
+            Logger.log("[PRODUTO]: Erro ao inserir produto: " + error);
+            return null;
         }
     }
 
@@ -51,10 +61,30 @@ class Produto {
         try {
             const { db, client } = await connect();
             const result = await db.collection("produto").find(filtro).toArray();
-            console.log("produtos encontrados!", result);
+
+            const produtosComStatus = this.verificarDisponibilidadeProduto(result);
+
             client.close();
+            return produtosComStatus;
         } catch (error) {
-            Logger.log("Erro ao buscar produtos! " + error);
+            Logger.log("[PRODUTO]: Erro ao buscar produtos! " + error);
+            return null;
+        }
+    }
+
+
+    static async atualizar(filtro, novosDados) {
+        try {
+            const { db, client } = await connect();
+            const result = await db.collection("produto").updateMany(filtro, {
+            $set: novosDados,
+            });
+
+            client.close();
+            return result;
+        } catch (error) {
+            Logger.log("[PRODUTO]: Erro ao atualizar produtos: " + error);
+            return null;
         }
     }
 
@@ -62,13 +92,14 @@ class Produto {
         try {
             const { db, client } = await connect();
             const result = await db.collection("produto").deleteMany(filtro);
-            console.log("produto deleta com sucesso!", result.deletedCount);
+
             client.close();
+            return result;
         } catch (error) {
-            Logger.log("Erro ao deletar produtos " + error);
+            Logger.log("[PRODUTO]: Erro ao deletar produtos: " + error);
+            return null;
         }
     }
-
 }
 
 module.exports = Produto;
