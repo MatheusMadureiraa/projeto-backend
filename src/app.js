@@ -49,41 +49,42 @@ async function executar() {
     // await atualizarEmpresas( {senha: "123456"}, { nomeEmpresa: "Empresa Atualizada" });
     // await deletarEmpresas( {nomeEmpresa: "Empresa Atualizada" });
 
+
     /* CRUD PEDIDO */
-    // await criarPedido({
-    //     cpfCliente: "500.989.637-90",
-    //     frete: 19.90,
-    //     formaPagamento: "pix",
-    //     dataPedido: new Date(),
-    //     dataEntrega: "12/jun",
-    //     itens: [
-    //         {
-    //             produtoId: "abc123",
-    //             nome: "garrafinha",
-    //             preco: 89.90,
-    //             quantidade: 2
-    //         },
-    //         {
-    //             produtoId: "def123",
-    //             nome: "Teclado Mecânico",
-    //             preco: 199.90,
-    //             quantidade: 1
-    //         }
-    //     ],
-    //     endereco: [
-    //         {
-    //             cep: "17040-987",
-    //             cidade: "Bauru",
-    //             rua: "Rua Teste",
-    //             numero: "2-75",
-    //             complemento: ""
-    //         }
-    //     ],
-    //     status: -1
-    // });
-    // await buscarPedidos( {cpfCliente: "500.989.637-90"});
-    // await atualizarPedidos({cpfCliente: "500.989.637-90"}, { formaPagamento: "boleto" });
-    // await deletarPedidos ( {formaPagamento: "boleto"} );
+    await criarPedido({
+        cpfCliente: "500.989.637-90",
+        frete: 19.90,
+        formaPagamento: "pix",
+        dataPedido: new Date(),
+        dataEntrega: "12/jun",
+        itens: [
+            {
+                produtoId: "abc123",
+                nome: "garrafinha",
+                preco: 89.90,
+                quantidade: 2
+            },
+            {
+                produtoId: "def123",
+                nome: "Teclado Mecânico",
+                preco: 199.90,
+                quantidade: 1
+            }
+        ],
+        endereco: [
+            {
+                cep: "17040-987",
+                cidade: "Bauru",
+                rua: "Rua Teste",
+                numero: "2-75",
+                complemento: ""
+            }
+        ],
+        status: -1
+    });
+    await buscarPedidos( {cpfCliente: "500.989.637-90"});
+    await atualizarPedidos({cpfCliente: "500.989.637-90"}, { formaPagamento: "boleto" });
+    await deletarPedidos ( {formaPagamento: "boleto"} );
 
 
     /* CRUD PRODUTO */

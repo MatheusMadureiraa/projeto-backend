@@ -2,7 +2,7 @@
 
 > Este é um projeto para um sistema de e-commerce, construído com foco em aprendizado e boas práticas em Node.js e MongoDB. Ele implementa as operações básicas de um CRUD (Create, Read, Update, Delete) para: `empresa`, `cliente`, `produto` e `pedido`.
 
-O sistema será escalado futuramente, já estou separando responsabilidades em `models` (dados e validações) e `controllers` (regras de negócio), com estrutura pronta para ***futura integração com o Express***.
+O sistema será escalado futuramente com express, já estou separando responsabilidades em `models` (dados e validações) e `controllers` (regras de negócio), com estrutura pronta para ***futura integração com o Express***.
 
 ## 🚀 Como rodar o projeto
 
@@ -24,7 +24,7 @@ Certifique-se de que o MongoDB esteja rodando localmente na porta padrão 27017 
 Execute o projeto:
 
     ```bash
-    node src/app.js OU node app.js -> se vc estiver dentro da pasta src/
+    npm start
     ```
 
 O arquivo app.js chama os métodos dos controllers para testar as operações de CRUD de cada rota.
@@ -37,7 +37,7 @@ O arquivo app.js chama os métodos dos controllers para testar as operações de
 - Log de erros em arquivo (fs)
 - Estrutura pronta para uso com Express
 
-## 📌 MongoDB e Terminal após CRUD
+## 📌 MongoDB e Terminal após operações do CRUD
 <div align="center">
     <img src="./assets-markdown/mongodb.png" width="90%" alt="Exemplo mongoDB" /> 
     <br /> 
